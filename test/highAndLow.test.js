@@ -2,8 +2,6 @@
 
 // import chai, declare expect variable
 const expect = require('chai').expect;
-
-// import adder
 const highAndLow = require('../highAndLow');
 
 describe('highAndLow', () => {
@@ -26,12 +24,9 @@ describe('highAndLow', () => {
     expect(answer).to.have.length.above(2);
   });
 
-
-
   it('should raise error if args is not a string of numbers', function() {
-    // range of bad inputs where not both are numbers
     const badInputs = ['a', true, () => {}, 'a b c d -4'];
-    // prove that an error is raised for bad inputs
+
     badInputs.forEach(function(input) {
       expect(function() {
         highAndLow(input).to.equal(NaN);
