@@ -24,7 +24,7 @@ describe('highAndLow', () => {
     expect(answer).to.have.length.above(2);
   });
 
-  it('should raise error if args is not a string of numbers', function() {
+  it('return NaN if input is not a string of numbers', function() {
     const badInputs = ['a', true, () => {}, 'a b c d -4'];
 
     badInputs.forEach(function(input) {
