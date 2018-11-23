@@ -5,16 +5,28 @@
 
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
-function solution(num) {
+// function solution(num) {
+//   let sum = 0;
+//   for (let i = 1; i < num; i++) {
+//     if (i % 3 === 0 || i % 5 === 0) {
+//       sum += i; 
+//       console.log( `At current i = ${i}, this is sum: ${sum}`);
+//     }
+//   }
+//   console.log(`this is the total sum: ${sum}`);
+//   return sum;
+// }
+
+
+/* Refactor ternary operator solution */
+
+function solution(number) {   
   let sum = 0;
-  for (let i = 1; i < num; i++) {
-    if (i % 3 === 0 || i % 5 === 0) {
-      sum += i; 
-      console.log( `At current i = ${i}, this is sum: ${sum}`);
-    }
+  for (let i = 0; i < number; i++) {   
+    sum += (!(i % 3) || !(i % 5)) ? i : 0;
   }
-  console.log(`this is the total sum: ${sum}`);
+  console.log(sum);
   return sum;
 }
 
-solution(25);
+solution(10);
