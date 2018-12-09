@@ -2,6 +2,11 @@
 
 /* ======== Merging an array of objects ======= 
   https://gist.github.com/alfaraday/89ce3718032b7e462424aad787e2d3f8
+
+  resources: 
+  https://zellwk.com/blog/looping-through-js-objects/
+  https://www.linkedin.com/pulse/javascript-filter-function-examples-rafael-mariano-de-oliveira/
+
 */
 
 const arr1 = [{
@@ -37,63 +42,65 @@ const arr2 =
   }
 }];
 
-/* ES6 spread operator, object destructuring, and filter */
+/* DATA MERGE STREAM: ES6 spread operator, object destructuring, and filter */
 
-// const dataMergeStream = (array1, array2) => {
+const dataMergeStream = (array1, array2) => {
 
-//   //merge all data in an array
-//   const mergedArray = [...array1, ...array2];
-
-//   const ids = mergedArray.map( obj => obj.id );
-//   // console.log(ids);
-
-//   const uniq = (a) => {
-//     return a.sort().filter( (item, pos, ary) => {
-//       return !pos || item != ary[pos - 1];
-//     });
-//   };
-
-//   const reducedIds = uniq(ids);
-//   // console.log('reducedIds',reducedIds);
-  
-//   // const filterById = mergedArray.filter( obj => obj.id === id);
-//   // console.log(filterById);
-  
-//   const filterById = mergedArray.filter( obj => {
-//     for (let i = 0; i < reducedIds.length; i++) {
-//       if (obj.id === reducedIds[i]) {
-//         console.log(obj);
-//       }
-//     }
-//   });
-//   console.log(filterById);
-
-// };
-
-// dataMergeStream(arr1, arr2);
-
-
-// /* ES6 spread operator, object destructuring, and filter */
-
-const dataMerge = (id, array1, array2) => {
-
-  //grab all objects in the array and filter it by id
+  //merge all data in an array
   const mergedArray = [...array1, ...array2];
-  const filterById = mergedArray.filter( obj => obj.id === id);
-  
-  //we're gonna use Object.assign to merge all prop in a new object, this gets rid of all duplication
-  const [ Array1 , Array2 ] = filterById; 
-  /* console.log('mergedArray', mergedArray); */
 
-  const mergedData = Object.assign(Array1, Array2);
+  const ids = mergedArray.map( obj => obj.id );
+  // console.log(ids);
+
+  const uniq = (a) => {
+    return a.sort().filter( (item, pos, ary) => {
+      return !pos || item !== ary[pos - 1];
+    });
+  };
+
+  const reducedIds = uniq(ids);
+
+  // console.log('reducedIds',reducedIds);
+  const id1 = mergedArray.filter( obj => obj.id === reducedIds[0] );
+  const id2 = mergedArray.filter( obj => obj.id === reducedIds[1] );
+  /*   console.log(filterById); */
+
+  const [ item1 , newitem1 ] = id1;
+  const [ item2 , newitem2 ] = id2;
+  const mergedData1 = Object.assign(item1 , newitem1);
+  const mergedData2 = Object.assign(item2 , newitem2);
 
   //set it equal to a new array
-  const newArr = [ mergedData ];
+  const newArr = [ mergedData1, mergedData2 ];
   console.log(newArr);
+  
 };
 
-dataMerge('aBcDeFgH',arr1, arr2);
-dataMerge('zYxWvUt',arr1, arr2);
+dataMergeStream(arr1, arr2);
+
+
+// /* DATA MERGE: ES6 spread operator, object destructuring, and filter */
+
+// const dataMerge = (id, array1, array2) => {
+
+//   //grab all objects in the array and filter it by id
+//   const mergedArray = [...array1, ...array2];
+//   const filterById = mergedArray.filter( obj => obj.id === id);
+  
+//   //we're gonna use Object.assign to merge all prop in a new object, this gets rid of all duplication
+//   const [ Array1 , Array2 ] = filterById; 
+//   /* console.log('mergedArray', mergedArray); */
+
+//   const mergedData = Object.assign(Array1, Array2);
+
+//   //set it equal to a new array
+//   const newArr = [ mergedData ];
+//   console.log(newArr);
+// };
+
+// dataMerge('aBcDeFgH',arr1, arr2);
+// dataMerge('zYxWvUt',arr1, arr2);
+
 
 /* ======= direct solution  ======= */
 // const dataMergeStream = (array1, array2) => {
