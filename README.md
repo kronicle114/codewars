@@ -68,3 +68,5 @@ The lowest index N where the side to the left of N is equal to the side to the r
 Note:
 If you are given an array with multiple answers, return the lowest correct index.
 An empty array should be treated like a 0 in this problem.
+
+# Day 4: Methods of String object--slice(), substring() and substr()
