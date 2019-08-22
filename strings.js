@@ -16,7 +16,7 @@ const arr1 = ["ab","cde","fgh"]
 const arr2 = ["abc","defgh","ijklmn"]
 const arr3 = ["codewars","javascript","java"]
 
-function cutIt(arr){
+module.exports = function cutIt(arr){
     // for loop that gets the length of each string, return the smallest length
     // so you need to find the min of the each 
     let min = arr[0].length
@@ -28,13 +28,12 @@ function cutIt(arr){
     }
     //map through the arr again and slice the strings using the minimum
     const map = arr.map( s => s.slice(0, min))
-    console.log(map)
     return map
 }
 
-cutIt(arr1)
-cutIt(arr2)
-cutIt(arr3)
+// cutIt(arr1)
+// cutIt(arr2)
+// cutIt(arr3)
 
 // Alternative solution
 
